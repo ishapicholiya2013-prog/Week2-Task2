@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS employees (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL CHECK(length(name) BETWEEN 2 AND 80), department TEXT NOT NULL, role TEXT NOT NULL, salary REAL NOT NULL CHECK(salary>0), joinDate TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_employees_name ON employees(name);

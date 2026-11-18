@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Employee directory" />
+    <title>Employee directory | Northstar People</title>
+    <link rel="stylesheet" href="styles.css?v=studio-v3" />
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="northstar.css?v=4" />
+  </head>
+  <body>
+    <header>
+      <nav aria-label="Main navigation">
+        <a class="brand" href="index.html">Northstar<span> People</span></a
+        ><button
+          class="menu secondary"
+          aria-expanded="false"
+          aria-controls="navigation"
+        >
+          Menu ☰
+        </button>
+        <div id="navigation" class="links">
+          <a href="index.html" aria-current="page">Directory</a>
+        </div>
+      </nav>
+    </header>
+    <main class="compact">
+      <div class="directory-heading">
+        <span class="eyebrow">People operations</span>
+        <h1>Employee directory</h1>
+        <p class="lead">
+          Manage employee records in one place, from the first day to the next
+          role.
+        </p>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <small>Total employees</small><strong id="total">—</strong>
+        </div>
+        <div class="stat">
+          <small>Departments</small><strong id="departments">—</strong>
+        </div>
+      </div>
+      <div class="toolbar">
+        <div class="field">
+          <label for="search">Search name, department or role</label
+          ><input
+            id="search"
+            type="search"
+            placeholder="Find someone on your team…"
+          />
+        </div>
+        <button id="add">+ Add employee</button>
+      </div>
+      <p id="status" class="notice" role="status"></p>
+      <div
+        class="table-wrap"
+        tabindex="0"
+        role="region"
+        aria-label="Employee records"
+      >
+        <table>
+          <caption class="muted">
+            Employee directory · annual salaries in INR
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col"><button data-sort="name">Employee ↕</button></th>
+              <th scope="col">
+                <button data-sort="department">Department ↕</button>
+              </th>
+              <th scope="col"><button data-sort="role">Role ↕</button></th>
+              <th scope="col">
+                <button data-sort="salary">Annual salary ↕</button>
+              </th>
+              <th scope="col">
+                <button data-sort="joinDate">Joined ↕</button>
+              </th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p id="empty" class="muted hidden">
+        No matching employees. Try another search or add a record.
+      </p>
+      <dialog id="editor" aria-labelledby="form-title">
+        <form id="employee-form">
+          <h2 id="form-title">Add employee</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Employee name</label
+              ><input
+                id="name"
+                name="name"
+                required
+                minlength="2"
+                maxlength="80"
+              />
+            </div>
+            <div class="field">
+              <label for="department">Department</label
+              ><select id="department" name="department">
+                <option>Engineering</option>
+                <option>Design</option>
+                <option>Operations</option>
+                <option>Human Resources</option>
+                <option>Finance</option>
+                <option>Marketing</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="role">Role</label
+              ><input
+                id="role"
+                name="role"
+                required
+                minlength="2"
+                maxlength="80"
+              />
+            </div>
+            <div class="field">
+              <label for="salary">Annual salary INR</label
+              ><input
+                id="salary"
+                name="salary"
+                type="number"
+                required
+                min="1"
+                max="100000000"
+                step="0.01"
+              />
+            </div>
+            <div class="field">
+              <label for="joinDate">Join date</label
+              ><input
+                id="joinDate"
+                name="joinDate"
+                type="date"
+                required
+                min="1900-01-01"
+                max="2100-12-31"
+              />
+            </div>
+          </div>
+          <p id="form-error" class="error" role="alert"></p>
+          <div class="actions">
+            <button id="save">Save employee</button
+            ><button type="button" class="secondary" id="cancel">Cancel</button>
+          </div>
+        </form>
+      </dialog>
+      <dialog id="delete-dialog" aria-labelledby="delete-title">
+        <h2 id="delete-title">Delete employee?</h2>
+        <p id="delete-label"></p>
+        <p>This action permanently removes the record.</p>
+        <div class="actions">
+          <button id="confirm-delete" class="danger">Delete employee</button
+          ><button id="keep" class="secondary">Keep employee</button>
+        </div>
+        <p id="delete-error" class="error" role="alert"></p>
+      </dialog>
+    </main>
+    <footer>
+      <div>
+        <div>
+          <b>Northstar People</b><br /><small
+            >Thoughtful systems. Everyday clarity.</small
+          >
+        </div>
+        <div>
+          <a href="index.html">Directory</a>
+          <p>
+            <small
+              >Project by Isha · Internship Week 2 · Demonstration
+              project</small
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
